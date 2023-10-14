@@ -1,0 +1,6 @@
+.idea/
+node_modules/
+git
+package-lock.json
+app/
+config/
