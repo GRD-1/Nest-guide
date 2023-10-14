@@ -67,6 +67,9 @@
     "import/extensions": "off",
     "import/newline-after-import": "off",
     "import/prefer-default-export": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+
+    // Nest specific
+    "comma-dangle": ["error", "never"]
   }
 }
