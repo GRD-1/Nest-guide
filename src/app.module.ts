@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { TopPageModule } from './top-page/top-page.module';
 import { ProductModule } from './product/product.module';
 import { ReviewModule } from './review/review.module';
+import { UsersModule } from './users/users.module';
 
 const config = new ConfigService();
 const pathToMongo = config.get('PATH_TO_MONGO');
@@ -25,7 +26,8 @@ console.log('\napp.module pathToMongo = ', pathToMongo);
     AuthModule,
     TopPageModule,
     ProductModule,
-    ReviewModule],
+    ReviewModule,
+    UsersModule],
   controllers: [AppController],
   providers: [AppService]
 })
