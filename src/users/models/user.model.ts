@@ -1,9 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
-// eslint-disable-next-line no-use-before-define
-export type UserDocument = HydratedDocument<User>;
-
 @Schema()
 export class User {
   @Prop({ required: true })
@@ -16,4 +13,5 @@ export class User {
     images: string[];
 }
 
+export type UserDocument = HydratedDocument<User>;
 export const UserSchema = SchemaFactory.createForClass(User);

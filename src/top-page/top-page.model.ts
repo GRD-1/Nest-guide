@@ -1,24 +1,68 @@
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument } from 'mongoose';
+import { AuthModel } from '../auth/auth.model';
+
 export enum TopLevelCategory {
   Courses,
   Services,
   Books,
   Products,
 }
-export class TopPageModel {
-  _id: string;
-  firstCategory: TopLevelCategory;
-  secondCategory: string;
-  hh?: {
+
+export class HhData {
+  @Prop()
     count: number;
+
+  @Prop()
     juneSalary: number;
+
+  @Prop()
     middleSalary: number;
+
+  @Prop()
     seniorSalary: number;
-  };
-  advantages: {
-    title: string;
-    description: string;
-  }[];
-  seoText: string;
-  tagsTitle: string;
-  tags: string[];
 }
+
+export class TopPageAdvantage {
+  @Prop()
+    title: number;
+
+  @Prop()
+    description: number;
+}
+
+@Schema({ timestamps: true, _id: true })
+export class TopPageModel {
+  @Prop({ enum: TopLevelCategory })
+    firstCategory: TopLevelCategory;
+
+  @Prop()
+    secondCategory: string;
+
+  @Prop()
+    category: string;
+
+  @Prop()
+    alias: string;
+
+  @Prop()
+    title: string;
+
+  @Prop({ type: () => HhData })
+    hh?: HhData;
+
+  @Prop({ type: () => [TopPageAdvantage] })
+    advantages: TopPageAdvantage[];
+
+  @Prop()
+    seoText: string;
+
+  @Prop()
+    tagsTitle: string;
+
+  @Prop({ type: () => [String] })
+    tags: string[];
+}
+
+export type TopPageDocument = HydratedDocument<TopPageModel>;
+export const TopPageSchema = SchemaFactory.createForClass(TopPageModel);

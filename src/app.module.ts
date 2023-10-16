@@ -26,7 +26,8 @@ console.log('\napp.module pathToMongo = ', pathToMongo);
     TopPageModule,
     ProductModule,
     ReviewModule,
-    UsersModule],
+    UsersModule
+  ],
   controllers: [AppController],
   providers: [AppService]
 })
