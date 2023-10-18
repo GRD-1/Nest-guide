@@ -10,10 +10,6 @@ import { ReviewModule } from './review/review.module';
 import { UsersModule } from './users/users.module';
 import { getMongoConfig } from './config/mongo.config';
 
-const config = new ConfigService();
-const pathToMongo = config.get('PATH_TO_MONGO');
-console.log('\napp.module pathToMongo = ', pathToMongo);
-
 @Module({
   imports: [
     ConfigModule.forRoot(),

@@ -28,4 +28,4 @@ lerna-debug.log*
 *.sublime-workspace
 
 # database
-/mongo-data-4.4
+/mongodb

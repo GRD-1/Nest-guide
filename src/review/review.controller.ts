@@ -1,4 +1,15 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Post,
+  Req
+} from '@nestjs/common';
+import { Request } from 'express';
 import { CreateReviewDto } from './dto/create-review.dto';
 import { ReviewService } from './review.service';
 import { REVIEW_NOT_FOUND } from './review.constants';
@@ -9,7 +20,9 @@ export class ReviewController {
   constructor(private readonly reviewService: ReviewService) {}
 
   @Post('create')
-  async create(@Body() dto: CreateReviewDto): Promise<ReviewModel> {
+  async create(@Body() dto: CreateReviewDto, @Req() request: Request): Promise<ReviewModel> {
+    console.log('\nReviewController dto', dto);
+    console.log('request.body:', request.body);
     return this.reviewService.create(dto);
   }
 
