@@ -12,7 +12,10 @@ import { getMongoConfig } from './config/mongo.config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      envFilePath: ['env/.env', 'env/.env.mongodb-dev'],
+      isGlobal: true
+    }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
