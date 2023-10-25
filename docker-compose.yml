@@ -1,12 +1,29 @@
 version: '3'
 services:
-  mongo:
-    image: mongo:4.4.4
-    container_name: mongo
-    restart: always
-    environment:
-      - MONGO_INITDB_DATABASE=ValoryDB
+  node:
+    image: nodeapp
+    container_name: node
+    restart: on-failure
+    env_file:
+      - env/.env.mongodb-dev
+      - env/.env.ravoly-dev
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     ports:
-      - 27017:27017
+      - '3000:3000'
     volumes:
-      - ./mongodb:/data/db
+      - ./src:/projectFiles/src
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: on-failure
+    env_file:
+      - env/.env.mongodb-dev
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./db/data:/data/db

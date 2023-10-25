@@ -13,7 +13,7 @@ import { getMongoConfig } from './config/mongo.config';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['env/.env', 'env/.env.mongodb-dev'],
+      envFilePath: ['env/.env.ravoly-dev', 'env/.env.mongodb-dev'],
       isGlobal: true
     }),
     MongooseModule.forRootAsync({
