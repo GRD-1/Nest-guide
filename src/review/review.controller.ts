@@ -36,4 +36,9 @@ export class ReviewController {
   async get(@Param('productId') productId: string): Promise<ReviewModel[] | null> {
     return this.reviewService.findByProductId(productId);
   }
+
+  @Delete('byProductId/:productId')
+  async deleteByProductId(@Param('productId') productId: string): Promise<{ deletedCount: number }> {
+    return this.reviewService.deleteByProductId(productId);
+  }
 }
