@@ -26,7 +26,7 @@ export class ReviewController {
 
   @Delete(':id')
   async delete(@Param('id') id: string): Promise<void> {
-    const deletedDoc = this.reviewService.delete(id);
+    const deletedDoc = await this.reviewService.delete(id);
     if (!deletedDoc) {
       throw new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
     }
