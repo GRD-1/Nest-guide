@@ -7,15 +7,18 @@ import {
   HttpStatus,
   Param,
   Post,
-  Req, UsePipes, ValidationPipe
+  Req, UseFilters, UsePipes, ValidationPipe
 } from '@nestjs/common';
 import { Request } from 'express';
 import { CreateReviewDto } from './dto/create-review.dto';
 import { ReviewService } from './review.service';
 import { REVIEW_NOT_FOUND } from './review.constants';
 import { ReviewModel } from './review.model';
+import { MyCustomException } from '../filters/exceptions/custom-exceptions';
+import { MyCustomExceptionFilter } from '../filters/custom-exception.filter';
 
 @Controller('review')
+@UseFilters(MyCustomExceptionFilter)
 export class ReviewController {
   constructor(private readonly reviewService: ReviewService) {}
 
@@ -41,5 +44,10 @@ export class ReviewController {
   @Delete('byProductId/:productId')
   async deleteByProductId(@Param('productId') productId: string): Promise<{ deletedCount: number }> {
     return this.reviewService.deleteByProductId(productId);
+  }
+
+  @Get('exception')
+  async getException(): Promise<HttpException> {
+    throw new MyCustomException('Database is unavailable');
   }
 }
