@@ -2,14 +2,13 @@ version: '3'
 services:
   node:
     image: nodeapp
-    container_name: nest-guide-node
+    container_name: "nest-guide-node"
     restart: on-failure
     env_file:
-      - env/.env.mongodb-dev
-      - env/.env.ravoly-dev
+      - "env/.env.mongodb-${NODE_ENV}"
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: "docker/Dockerfile-${NODE_ENV}"
     ports:
       - '3000:3000'
     volumes:
@@ -22,8 +21,8 @@ services:
     container_name: nest-guide-mongodb
     restart: on-failure
     env_file:
-      - env/.env.mongodb-dev
+      - "env/.env.mongodb-${NODE_ENV}"
     ports:
       - '27017:27017'
     volumes:
-      - ./db/data:/data/db
+      - "./db/${NODE_ENV}/data:/data/db"

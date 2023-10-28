@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import * as process from 'process';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -9,12 +10,12 @@ import { ProductModule } from './product/product.module';
 import { ReviewModule } from './review/review.module';
 import { UsersModule } from './users/users.module';
 import { getMongoConfig } from './config/mongo.config';
+const projectMode = process.env.NODE_ENV;
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      // envFilePath: ['env/.env.ravoly-dev', 'env/.env.mongodb-dev'],
-      envFilePath: ['env/.env.mongodb-test'],
+      envFilePath: ['env/.env.ravoly', `env/.env.mongodb-${projectMode}`],
       isGlobal: true
     }),
     MongooseModule.forRootAsync({

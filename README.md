@@ -2,50 +2,105 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+<p align="center">Nest.js training project</p>
+<p align="center">
+  <a href="" target="_blank"><img src="https://img.shields.io/badge/npm-v9.5.1-blue?style=flat&logo=nodedotjs" alt="NPM Version" /></a>
+  <a href="" target="_blank"><img src="https://img.shields.io/badge/covarage-5%25-%2300c642?style=flat" alt="Coverage" /></a>
+  <a href="" rel="nofollow"><img src="https://img.shields.io/badge/istall_size-136%20KB-%23ebdb32?style=flat" alt="install size"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-# Nest-guide
+## Contents
+1. [Packages](#packages)
+2. [Deploy](#deploy)
+3. [Launch](#launch)
+4. [Usage](#usage)
+5. [Environment](#environment)
+6. [Settings](#settings)
+7. [API](#api)
+8. [Documentation](#documentation)
+9. [Tests](#tests)
+10. [Database](#database)
+11. [Logs](#logs)
 
-Nest.js training project
+## Packages
 
-## Installation
+- OS Ubuntu-22.04
+- Node.js 18.16.0
+- npm 9.5.1
+- ...
 
-```bash
-$ npm install
+## Deploy
+
+The project is prepared to launch via the docker. All it's components are described in the docker files
+include the databases and are installed automatically. 
+To deploy the application just run the corresponding command in the terminal.
+
+* for development mode use:
+``` bash
+$ docker-compose -f docker-dev.yml build --no-cache -d --env-file env/.env.dev 
+```
+* for product mode use:
+``` bash
+$ docker-compose -f docker-prod.yml build --no-cache
+```
+* for test mode use:
+``` bash
+$ docker-compose -f docker-test.yml build --no-cache
 ```
 
-## Running the app
+## Launch
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+* for development mode use:
+``` bash
+$ docker-compose -f docker-dev.yml up -d --env-file env/.env.dev
+```
+* for product mode use:
+``` bash
+$ docker-compose -f docker-prod.yml up
+```
+* for test mode use:
+``` bash
+$ docker-compose -f docker-test.yml up
 ```
 
-## Test
+## Usage
+
+* After the service is launched it is available at http://localhost:3000
+
+## Environment
+
+Environment variables are here: ./env
+They connected to the project in the docker-compose files at the [env_file] section.
+
+## Settings
+
+* the settings are here: ./src/config/config.ts
+
+## API
+
+* swagger (add to api)
+
+## Documentation
+
+* compodoc (add to api)
+
+## Tests
+
+* All tests are here: _src/test
+* html coverage report will be here: _src/test/coverage
+
+* to run tests in local mode:
+    * To run unit tests use the command: [ npm run test:unit ]
+    * To run integration tests use the command: [ npm run test:int ]
+    * To run a specific test use the command: [ jest <pathToSpecificTest> ]
+    * To run all tests and get the coverage map use the command: [ npm run test:cov ]
+
+* to run tests in docker mode:
+    * Build the project in development mode using the command [ docker-compose -f docker-dev.yml up --build ]
+    * To run unit tests use the command: [ docker exec -it taskqueues-node-1 npm run test:unit ]
+    * To run integration tests use the command: [ docker exec -it taskqueues-node-1 npm run test:int ]
+    * To run a specific test use the command: [ docker exec -it taskqueues-node-1 jest <pathToSpecificTest> ]
+    * To run all tests and get the coverage map use the command: [ docker exec -it taskqueues-node-1 npm run test:cov ]
 
 ```bash
 # unit tests
@@ -57,17 +112,3 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
