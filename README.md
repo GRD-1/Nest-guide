@@ -4,23 +4,24 @@
 
 <p align="center">Nest.js training project</p>
 <p align="center">
-  <a href="" target="_blank"><img src="https://img.shields.io/badge/npm-v9.5.1-blue?style=flat&logo=nodedotjs" alt="NPM Version" /></a>
+  <a href="https://nodejs.org/en/about" target="_blank"><img src="https://img.shields.io/badge/Node.js-v18.16.0-blue?logo=nodedotjs" alt="Node.js Version" /></a>
+  <a href="https://www.typescriptlang.org/" target="_blank"><img src="https://img.shields.io/badge/TypeScript-v4.7.4-blue?logo=typescript" alt="TypeScript Version" /></a>
+  <a href="https://nestjs.com/" target="_blank"><img src="https://img.shields.io/badge/Nest.js-v9.4.2-blue?logo=nestjs" alt="Nest.js Version" /></a>
   <a href="" target="_blank"><img src="https://img.shields.io/badge/covarage-5%25-%2300c642?style=flat" alt="Coverage" /></a>
   <a href="" rel="nofollow"><img src="https://img.shields.io/badge/istall_size-136%20KB-%23ebdb32?style=flat" alt="install size"></a>
 </p>
 
 ## Contents
 1. [Packages](#packages)
-2. [Deploy](#deploy)
-3. [Launch](#launch)
-4. [Usage](#usage)
-5. [Environment](#environment)
-6. [Settings](#settings)
-7. [API](#api)
-8. [Documentation](#documentation)
-9. [Tests](#tests)
-10. [Database](#database)
-11. [Logs](#logs)
+2. [Launch](#launch)
+3. [Usage](#usage)
+4. [Environment](#environment)
+5. [Settings](#settings)
+6. [API](#api)
+7. [Documentation](#documentation)
+8. [Tests](#tests)
+9. [Database](#database)
+10. [Logs](#logs)
 
 ## Packages
 
@@ -29,38 +30,25 @@
 - npm 9.5.1
 - ...
 
-## Deploy
-
-The project is prepared to launch via the docker. All it's components are described in the docker files
-include the databases and are installed automatically. 
-To deploy the application just run the corresponding command in the terminal.
-
-* for development mode use:
-``` bash
-$ docker-compose -f docker-dev.yml build --no-cache -d --env-file env/.env.dev 
-```
-* for product mode use:
-``` bash
-$ docker-compose -f docker-prod.yml build --no-cache
-```
-* for test mode use:
-``` bash
-$ docker-compose -f docker-test.yml build --no-cache
-```
-
 ## Launch
+The project is prepared to launch via the docker.
+Firs of all, you need to install
+<a href="https://www.docker.com/products/docker-desktop/" target="_blank">
+<img src="https://img.shields.io/badge/docker-v24.0.2-blue?logo=docker" alt="Docker Version" />
+</a>
+Then run the corresponding command in the terminal.
 
 * for development mode use:
 ``` bash
-$ docker-compose -f docker-dev.yml up -d --env-file env/.env.dev
+$ docker-compose --env-file env/.env.dev up
 ```
 * for product mode use:
 ``` bash
-$ docker-compose -f docker-prod.yml up
+$ docker-compose --env-file env/.env.prod up
 ```
 * for test mode use:
 ``` bash
-$ docker-compose -f docker-test.yml up
+$ docker-compose --env-file env/.env.test up
 ```
 
 ## Usage

@@ -2,7 +2,7 @@ version: '3'
 services:
   node:
     image: nodeapp
-    container_name: "nest-guide-node"
+    container_name: "nest-guide-node-${NODE_ENV}"
     restart: on-failure
     env_file:
       - "env/.env.mongodb-${NODE_ENV}"
@@ -18,7 +18,7 @@ services:
 
   mongodb:
     image: mongo
-    container_name: nest-guide-mongodb
+    container_name: "nest-guide-mongodb-${NODE_ENV}"
     restart: on-failure
     env_file:
       - "env/.env.mongodb-${NODE_ENV}"
