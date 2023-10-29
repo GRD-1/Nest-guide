@@ -1,12 +1,13 @@
 # Base image for Node
-FROM node:18.16.0 as nodeapp
+FROM node:18.16.0 as nodeimg-prod
 
 # Copy project files
 WORKDIR /projectFiles
-COPY ../package.json ./tsconfig.json ./
+COPY ../package.json ./tsconfig.json ./tsconfig.build.json ./nest-cli.json ./
 
 # Install dependencies and build the project
 RUN npm install
+RUN npm run build
 
 # Expose necessary ports
 EXPOSE 3000

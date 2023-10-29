@@ -48,14 +48,18 @@ and then run the corresponding command in the terminal.
 
 * for development mode use:
 ``` bash
-$ docker-compose --env-file env/.env.dev up
+$ docker stop $(docker ps -aq)
+$ docker-compose --env-file env/.env.dev up -d
+$ docker logs nest-guide-node-dev -f --tail 30
 ```
 * for product mode use:
 ``` bash
-$ docker-compose --env-file env/.env.prod up -d
+$ docker stop $(docker ps -aq)
+$ docker-compose --env-file env/.env.prod up
 ```
 * for test mode use:
 ``` bash
+$ docker stop $(docker ps -aq)
 $ docker-compose --env-file env/.env.test up -d
 ```
 

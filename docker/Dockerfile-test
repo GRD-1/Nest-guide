@@ -1,5 +1,5 @@
 # Base image for Node
-FROM node:18.16.0 as nodeapp
+FROM node:18.16.0 as nodeimg-test
 
 # Copy project files
 WORKDIR /projectFiles
