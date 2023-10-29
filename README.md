@@ -27,6 +27,7 @@
 
 <ul>
   <li><a href="https://ubuntu.com/" target="_blank"><img src="https://img.shields.io/badge/Linux_Ubuntu-v22.04-blue?logo=ubuntu" alt="Linux Ubuntu Version" /></a></li>
+  <li><a href="https://www.docker.com/products/docker-desktop/" target="_blank"><img src="https://img.shields.io/badge/docker-v24.0.2-blue?logo=docker" alt="Docker Version" /></a></li>
   <li><a href="https://nodejs.org/en/about" target="_blank"><img src="https://img.shields.io/badge/Node.js-v18.16.0-blue?logo=nodedotjs" alt="Node.js Version" /></a></li>
   <li><a href="https://www.npmjs.com/" target="_blank"><img src="https://img.shields.io/badge/npm-v9.5.1-blue?logo=npm" alt="npm Version" /></a></li>
   <li><a href="https://www.typescriptlang.org/" target="_blank"><img src="https://img.shields.io/badge/TypeScript-v4.7.4-blue?logo=typescript" alt="TypeScript Version" /></a></li>
@@ -39,12 +40,11 @@
 </ul>
 
 ## Launch
-The project is prepared to launch via the docker.
-Firs of all, you need to install
+The project is prepared to launch via the docker.You need to install
 <a href="https://www.docker.com/products/docker-desktop/" target="_blank">
 <img src="https://img.shields.io/badge/docker-v24.0.2-blue?logo=docker" alt="Docker Version" />
 </a>
-Then run the corresponding command in the terminal.
+and then run the corresponding command in the terminal.
 
 * for development mode use:
 ``` bash
@@ -52,16 +52,16 @@ $ docker-compose --env-file env/.env.dev up
 ```
 * for product mode use:
 ``` bash
-$ docker-compose --env-file env/.env.prod up
+$ docker-compose --env-file env/.env.prod up -d
 ```
 * for test mode use:
 ``` bash
-$ docker-compose --env-file env/.env.test up
+$ docker-compose --env-file env/.env.test up -d
 ```
 
 ## Usage
 
-* After the service is launched it is available at http://localhost:3000
+* After the service is launched it is available at http://localhost:3000/api/
 
 ## Environment
 
@@ -82,29 +82,19 @@ They connected to the project in the docker-compose files at the [env_file] sect
 
 ## Tests
 
-* All tests are here: _src/test
-* html coverage report will be here: _src/test/coverage
-
-* to run tests in local mode:
-    * To run unit tests use the command: [ npm run test:unit ]
-    * To run integration tests use the command: [ npm run test:int ]
-    * To run a specific test use the command: [ jest <pathToSpecificTest> ]
-    * To run all tests and get the coverage map use the command: [ npm run test:cov ]
-
-* to run tests in docker mode:
-    * Build the project in development mode using the command [ docker-compose -f docker-dev.yml up --build ]
-    * To run unit tests use the command: [ docker exec -it taskqueues-node-1 npm run test:unit ]
-    * To run integration tests use the command: [ docker exec -it taskqueues-node-1 npm run test:int ]
-    * To run a specific test use the command: [ docker exec -it taskqueues-node-1 jest <pathToSpecificTest> ]
-    * To run all tests and get the coverage map use the command: [ docker exec -it taskqueues-node-1 npm run test:cov ]
+* To perform the tests you need to be loaded in [Test mode](#Launch). It's important because the tests use a database (!)
 
 ```bash
 # unit tests
-$ npm run test
+$ docker exec nest-guide-node-test npm run test
+```
 
+```bash
 # e2e tests
-$ npm run test:e2e
+$ docker exec nest-guide-node-test npm run test:e2e
+```
 
+```bash
 # test coverage
-$ npm run test:cov
+$ docker exec nest-guide-node-test npm run test:cov
 ```

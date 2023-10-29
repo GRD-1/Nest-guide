@@ -13,6 +13,7 @@ services:
       - '3000:3000'
     volumes:
       - ./src:/projectFiles/src
+      - ./test:/projectFiles/test
     depends_on:
       - mongodb
 
