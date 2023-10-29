@@ -25,10 +25,18 @@
 
 ## Packages
 
-- OS Ubuntu-22.04
-- Node.js 18.16.0
-- npm 9.5.1
-- ...
+<ul>
+  <li><a href="https://ubuntu.com/" target="_blank"><img src="https://img.shields.io/badge/Linux_Ubuntu-v22.04-blue?logo=ubuntu" alt="Linux Ubuntu Version" /></a></li>
+  <li><a href="https://nodejs.org/en/about" target="_blank"><img src="https://img.shields.io/badge/Node.js-v18.16.0-blue?logo=nodedotjs" alt="Node.js Version" /></a></li>
+  <li><a href="https://www.npmjs.com/" target="_blank"><img src="https://img.shields.io/badge/npm-v9.5.1-blue?logo=npm" alt="npm Version" /></a></li>
+  <li><a href="https://www.typescriptlang.org/" target="_blank"><img src="https://img.shields.io/badge/TypeScript-v4.7.4-blue?logo=typescript" alt="TypeScript Version" /></a></li>
+  <li><a href="https://nestjs.com/" target="_blank"><img src="https://img.shields.io/badge/Nest.js-v9.4.2-blue?logo=nestjs" alt="Nest.js Version" /></a></li>
+  <li><a href="https://www.npmjs.com/package/mongoose" target="_blank"><img src="https://img.shields.io/badge/mongoose-v7.6.2-blue?logo=mongoose" alt="Mongoose Version" /></a></li>
+  <li><a href="https://eslint.org/" target="_blank"><img src="https://img.shields.io/badge/eslint-v8.51.0-blue?logo=eslint" alt="Eslint Version" /></a></li>
+  <li><a href="https://prettier.io/" target="_blank"><img src="https://img.shields.io/badge/prettier-v2.3.2-blue?logo=prettier" alt="Prettier Version" /></a></li>
+  <li><a href="https://jestjs.io/" target="_blank"><img src="https://img.shields.io/badge/Jest-v29.0.5-blue?logo=jest" alt="Jest Version" /></a></li>
+  <li><a href="https://www.npmjs.com/package/supertest" target="_blank"><img src="https://img.shields.io/badge/supertest-v6.1.3-blue" alt="Supertest Version" /></a></li>
+</ul>
 
 ## Launch
 The project is prepared to launch via the docker.
