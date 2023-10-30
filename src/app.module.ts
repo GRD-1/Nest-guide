@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import * as process from 'process';
@@ -10,6 +10,8 @@ import { ProductModule } from './product/product.module';
 import { ReviewModule } from './review/review.module';
 import { UsersModule } from './users/users.module';
 import { getMongoConfig } from './config/mongo.config';
+import { RequestLoggingMiddleware } from './middleware/request-logging-middlware';
+import { ResponseLoggingMiddleware } from './middleware/response-logging-middlware';
 const projectMode = process.env.NODE_ENV;
 
 @Module({
@@ -32,4 +34,8 @@ const projectMode = process.env.NODE_ENV;
   controllers: [AppController],
   providers: [AppService]
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(RequestLoggingMiddleware, ResponseLoggingMiddleware).forRoutes('*');
+  }
+}
