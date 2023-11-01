@@ -11,9 +11,11 @@ services:
       dockerfile: "docker/Dockerfile-${NODE_ENV}"
     ports:
       - '3000:3000'
+      - "30000:9229"
     volumes:
       - ./src:/projectFiles/src
       - ./test:/projectFiles/test
+      - ./env:/projectFiles/env
     depends_on:
       - mongodb
 

@@ -5,7 +5,7 @@ import { LOGGER_CONFIG } from './config/logger.config';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule, {
-    logger: [...LOGGER_CONFIG]
+    logger: [...LOGGER_CONFIG],
   });
   app.setGlobalPrefix('/api');
   app.useGlobalFilters(new GlobalExceptionFilter());
