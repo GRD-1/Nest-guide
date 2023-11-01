@@ -10,6 +10,4 @@ COPY ../nodemon.json nodemon.json
 
 RUN npm install
 
-ENTRYPOINT [ "npm" ]
-
-CMD [ "run", "start:nodemon" ]
+ENTRYPOINT ["npm", "run", "start:debug"]
