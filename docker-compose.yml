@@ -1,7 +1,7 @@
 version: '3'
 services:
   node:
-    image: "nodeimg-${NODE_ENV}"
+    image: "nest-guide-nodeimg-${NODE_ENV}"
     container_name: "nest-guide-node-${NODE_ENV}"
     restart: on-failure
     env_file:
