@@ -2,7 +2,8 @@ FROM node:18.16.0 as nest-guide-nodeimg-debug
 
 WORKDIR /projectFiles
 
-COPY ../package.json ../tsconfig.json ../tsconfig.build.json ../nodemon.json ./
+COPY ../package.json ../tsconfig.json ../tsconfig.build.json ./
+COPY ../devops/nodemon.json nodemon.json
 
 RUN npm install
 

@@ -5,17 +5,17 @@ services:
     container_name: "nest-guide-node-${NODE_ENV}"
     restart: on-failure
     env_file:
-      - "env/.env.mongodb-${NODE_ENV}"
+      - "../env/.env.mongodb-${NODE_ENV}"
     build:
-      context: .
-      dockerfile: "docker/Dockerfile-${NODE_ENV}"
+      context: ..
+      dockerfile: "devops/Dockerfile-${NODE_ENV}"
     ports:
       - '3000:3000'
       - "30000:9229"
     volumes:
-      - ./src:/projectFiles/src
-      - ./test:/projectFiles/test
-      - ./env:/projectFiles/env
+      - ../src:/projectFiles/src
+      - ../test:/projectFiles/test
+      - ../env:/projectFiles/env
     depends_on:
       - mongodb
 
@@ -24,8 +24,8 @@ services:
     container_name: "nest-guide-mongodb-${NODE_ENV}"
     restart: on-failure
     env_file:
-      - "env/.env.mongodb-${NODE_ENV}"
+      - "../env/.env.mongodb-${NODE_ENV}"
     ports:
       - '27017:27017'
     volumes:
-      - "./db/${NODE_ENV}/data:/data/db"
+      - "../db/${NODE_ENV}/data:/data/db"

@@ -2,8 +2,8 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-<p align="center">Nest.js training project</p>
-<p align="center">
+<p style="display: block; width: 100%; text-align:center;">Nest.js training project</p>
+<p style="display: block; width: 100%; text-align:center;">
   <a href="https://nodejs.org/en/about" target="_blank"><img src="https://img.shields.io/badge/Node.js-v18.16.0-blue?logo=nodedotjs" alt="Node.js Version" /></a>
   <a href="https://www.typescriptlang.org/" target="_blank"><img src="https://img.shields.io/badge/TypeScript-v4.7.4-blue?logo=typescript" alt="TypeScript Version" /></a>
   <a href="https://nestjs.com/" target="_blank"><img src="https://img.shields.io/badge/Nest.js-v9.4.2-blue?logo=nestjs" alt="Nest.js Version" /></a>
@@ -21,8 +21,8 @@
 6. [API](#api)
 7. [Documentation](#documentation)
 8. [Tests](#tests)
-9. [Database](#database)
-10. [Logs](#logs)
+9. [Database](#tests)
+10. [Logs](#tests)
 
 ## Packages
 
@@ -52,24 +52,24 @@ and then run the corresponding command in the terminal.
 * for development mode use:
 ``` bash
 $ docker stop $(docker ps -aq)
-$ docker-compose --env-file env/.env.dev up -d
+$ docker-compose -f devops/docker-compose.yml --env-file env/.env.dev up -d
 $ docker logs nest-guide-node-dev -f --tail 30
 ```
 * for debug mode use:
 ``` bash
 $ docker stop $(docker ps -aq)
-$ docker-compose --env-file env/.env.debug up -d
+$ docker-compose -f devops/docker-compose.yml --env-file env/.env.debug up -d
 $ docker logs nest-guide-node-debug -f --tail 30
 ```
 * for product mode use:
 ``` bash
 $ docker stop $(docker ps -aq)
-$ docker-compose --env-file env/.env.prod up -d
+$ docker-compose -f devops/docker-compose.yml --env-file env/.env.prod up -d
 ```
 * for test mode use:
 ``` bash
 $ docker stop $(docker ps -aq)
-$ docker-compose --env-file env/.env.test up -d
+$ docker-compose -f devops/docker-compose.yml --env-file env/.env.test up -d
 ```
 
 ## Usage
