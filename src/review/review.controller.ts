@@ -16,6 +16,7 @@ import { REVIEW_NOT_FOUND } from './review.constants';
 import { ReviewModel } from './review.model';
 import { MyCustomException } from '../filters/exceptions/custom-exceptions';
 import { MyCustomExceptionFilter } from '../filters/custom-exception.filter';
+import { IdValidationPipe } from './pipes/id-validation-pipe';
 
 @Controller('review')
 @UseFilters(MyCustomExceptionFilter)
@@ -29,11 +30,12 @@ export class ReviewController {
   }
 
   @Delete(':id')
-  async delete(@Param('id') id: string): Promise<void> {
+  async delete(@Param('id', IdValidationPipe) id: string): Promise<number> {
     const deletedDoc = await this.reviewService.delete(id);
     if (!deletedDoc) {
       throw new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
     }
+    return 1;
   }
 
   @Get('byProductId/:productId')
