@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { AuthModel } from '../auth/auth.model';
+import { UserModel } from '../auth/user.model';
 
 export enum TopLevelCategory {
   Courses,

@@ -4,7 +4,6 @@ import { Request, Response } from 'express';
 @Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
   catch(exception: Error, host: ArgumentsHost): void {
-    console.log('\n++ GlobalExceptionLoggerFilter');
     console.error(exception);
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
@@ -18,6 +17,5 @@ export class GlobalExceptionFilter implements ExceptionFilter {
         statusCode: status,
         message
       });
-    console.log('-- GlobalExceptionLoggerFilter\n');
   }
 }

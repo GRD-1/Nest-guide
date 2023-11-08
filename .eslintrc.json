@@ -71,6 +71,7 @@
 
     // Nest specific
     "comma-dangle": ["error", "never"],
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "new-cap": ["error", { "newIsCap": false, "capIsNew": false }]
   }
 }

@@ -6,26 +6,26 @@ import { CreateReviewDto } from './dto/create-review.dto';
 
 @Injectable()
 export class ReviewService {
-  constructor(@InjectModel(ReviewModel.name) private readonly ReviewModelLocal: Model<ReviewDocument>) {}
+  constructor(@InjectModel(ReviewModel.name) private readonly reviewModel: Model<ReviewDocument>) {}
 
   async create(dto: CreateReviewDto): Promise<ReviewModel> {
-    const newReview = new this.ReviewModelLocal(dto);
+    const newReview = new this.reviewModel(dto);
     return newReview.save();
   }
 
   async delete(id: string): Promise<ReviewModel | null> {
-    return this.ReviewModelLocal.findByIdAndDelete(id).exec();
+    return this.reviewModel.findByIdAndDelete(id).exec();
   }
 
   async findById(id: string): Promise<ReviewModel | null> {
-    return this.ReviewModelLocal.findById(id).exec();
+    return this.reviewModel.findById(id).exec();
   }
 
   async findByProductId(productId: string): Promise<ReviewModel[]> {
-    return this.ReviewModelLocal.find({ productId }).exec();
+    return this.reviewModel.find({ productId }).exec();
   }
 
   async deleteByProductId(productId: string): Promise<{ deletedCount: number }> {
-    return this.ReviewModelLocal.deleteMany({ productId }).exec();
+    return this.reviewModel.deleteMany({ productId }).exec();
   }
 }
