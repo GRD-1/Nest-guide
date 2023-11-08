@@ -1,10 +1,8 @@
 import {
-  BadGatewayException, BadRequestException,
+  BadRequestException,
   Body,
   Controller,
   HttpCode,
-  HttpException,
-  HttpStatus,
   Post,
   UsePipes,
   ValidationPipe
@@ -26,7 +24,11 @@ export class AuthController {
     return this.authService.createUser(dto);
   }
 
+  @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post('login')
-  async login(@Body() dto: AuthDto): Promise<void> {}
+  async login(@Body() dto: AuthDto): Promise<any> {
+    const user = await this.authService.validateUser(dto.login, dto.password);
+    return this.authService.login(user.login);
+  }
 }
