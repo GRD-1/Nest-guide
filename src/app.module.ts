@@ -17,7 +17,7 @@ const projectMode = process.env.NODE_ENV;
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['env/.env.secret', `env/.env.mongodb-${projectMode}`],
+      envFilePath: ['env/.env', 'env/.env.project_root', `env/.env.mongodb-${projectMode}`],
       isGlobal: true
     }),
     MongooseModule.forRootAsync({
