@@ -21,6 +21,7 @@ import { JwtGuard } from '../auth/guards/jwt.guard';
 import { UserLogin } from '../decorators/user-login.decorator';
 
 @Controller('review')
+@UseGuards(JwtGuard)
 @UseFilters(MyCustomExceptionFilter)
 export class ReviewController {
   constructor(private readonly reviewService: ReviewService) {}
@@ -40,8 +41,8 @@ export class ReviewController {
     return 1;
   }
 
-  @UseGuards(JwtGuard)
   @Get('byProductId/:productId')
+  @UseGuards(JwtGuard)
   async get(@Param('productId') productId: string, @UserLogin() userLogin: string): Promise<ReviewModel[] | null> {
     console.log('\nmy custom param decorator has gotten from JwtGuard: "UserLogin" = ', userLogin);
     return this.reviewService.findByProductId(productId);

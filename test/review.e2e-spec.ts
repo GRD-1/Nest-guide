@@ -14,10 +14,15 @@ const testCreateReviewDto: Omit<CreateReviewDto, '_id'> = {
   rating: 5,
   productId
 };
+const loginDto = {
+  login: 'user_1@mail.ru',
+  password: 'pass_1'
+};
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
   let createdId: string;
+  let accessToken: string;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -26,11 +31,21 @@ describe('AppController (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     await app.init();
+
+    await request(app.getHttpServer())
+      .post('/auth/register')
+      .send(loginDto);
+
+    const { body } = await request(app.getHttpServer())
+      .post('/auth/login')
+      .send(loginDto);
+    accessToken = body.access_token;
   });
 
   it('/review/create (POST) - success', () => {
     return request(app.getHttpServer())
       .post('/review/create')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(testCreateReviewDto)
       .expect(201)
       .then(({ body }: request.Response):void => {
@@ -41,6 +56,7 @@ describe('AppController (e2e)', () => {
   it('/review/create (POST) - fail', () => {
     return request(app.getHttpServer())
       .post('/review/create')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send({ ...testCreateReviewDto, rating: 0 })
       .expect(400)
       .then(({ body }: request.Response):void => {
@@ -51,6 +67,7 @@ describe('AppController (e2e)', () => {
   it('/review/byProductId/:productId (GET) - success', () => {
     return request(app.getHttpServer())
       .get(`/review/byProductId/${productId}`)
+      .set('Authorization', `Bearer ${accessToken}`)
       .expect(200)
       .then(({ body }: request.Response) => {
         expect(body.length).toBe(1);
@@ -61,6 +78,7 @@ describe('AppController (e2e)', () => {
     const fakeProductId = '00000';
     return request(app.getHttpServer())
       .get(`/review/byProductId/${fakeProductId}`)
+      .set('Authorization', `Bearer ${accessToken}`)
       .expect(200)
       .then(({ body }: request.Response) => {
         expect(body.length).toBe(0);
@@ -70,6 +88,7 @@ describe('AppController (e2e)', () => {
   it('/review/:id (DELETE) - success', () => {
     const result = request(app.getHttpServer())
       .delete(`/review/${createdId}`)
+      .set('Authorization', `Bearer ${accessToken}`)
       .expect(200);
     return result;
   });
@@ -78,6 +97,7 @@ describe('AppController (e2e)', () => {
     const fakeProductId = new Types.ObjectId().toHexString();
     const result = request(app.getHttpServer())
       .delete(`/review/${fakeProductId}`)
+      .set('Authorization', `Bearer ${accessToken}`)
       .expect(404, {
         statusCode: 404,
         message: REVIEW_NOT_FOUND
