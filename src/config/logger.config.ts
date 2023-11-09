@@ -7,4 +7,4 @@ import { LogLevel } from '@nestjs/common';
  * 4 - 'verbose'
  * 5 - 'debug' - top level includes all types of events
  */
-export const LOGGER_CONFIG: LogLevel[] = ['debug'];
+export const LOGGER_CONFIG: LogLevel[] = ['log'];

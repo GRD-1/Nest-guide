@@ -7,7 +7,7 @@ import {
   HttpStatus,
   Param,
   Post,
-  Req, UseFilters, UsePipes, ValidationPipe
+  Req, UseFilters, UseGuards, UsePipes, ValidationPipe
 } from '@nestjs/common';
 import { Request } from 'express';
 import { CreateReviewDto } from './dto/create-review.dto';
@@ -17,6 +17,8 @@ import { ReviewModel } from './review.model';
 import { MyCustomException } from '../filters/exceptions/custom-exceptions';
 import { MyCustomExceptionFilter } from '../filters/custom-exception.filter';
 import { IdValidationPipe } from './pipes/id-validation-pipe';
+import { JwtGuard } from '../auth/guards/jwt.guard';
+import { UserLogin } from '../decorators/user-login.decorator';
 
 @Controller('review')
 @UseFilters(MyCustomExceptionFilter)
@@ -38,8 +40,10 @@ export class ReviewController {
     return 1;
   }
 
+  @UseGuards(JwtGuard)
   @Get('byProductId/:productId')
-  async get(@Param('productId') productId: string): Promise<ReviewModel[] | null> {
+  async get(@Param('productId') productId: string, @UserLogin() userLogin: string): Promise<ReviewModel[] | null> {
+    console.log('\nmy custom param decorator has gotten from JwtGuard: "UserLogin" = ', userLogin);
     return this.reviewService.findByProductId(productId);
   }
 

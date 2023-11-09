@@ -27,7 +27,7 @@ export class AuthController {
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post('login')
-  async login(@Body() dto: AuthDto): Promise<any> {
+  async login(@Body() dto: AuthDto): Promise<{ access_token: string}> {
     const user = await this.authService.validateUser(dto.login, dto.password);
     return this.authService.login(user.login);
   }
