@@ -19,7 +19,7 @@ const loginDto = {
   password: 'pass_1'
 };
 
-describe('AppController (e2e)', () => {
+describe('e2e tests: review module', () => {
   let app: INestApplication;
   let createdId: string;
   let accessToken: string;
