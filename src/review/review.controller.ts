@@ -16,7 +16,7 @@ import { REVIEW_NOT_FOUND } from './review.constants';
 import { ReviewModel } from './review.model';
 import { MyCustomException } from '../filters/exceptions/custom-exceptions';
 import { MyCustomExceptionFilter } from '../filters/custom-exception.filter';
-import { IdValidationPipe } from './pipes/id-validation-pipe';
+import { IdValidationPipe } from '../pipes/id-validation-pipe';
 import { JwtGuard } from '../auth/guards/jwt.guard';
 import { UserLogin } from '../decorators/user-login.decorator';
 

@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { UserModel } from '../auth/user.model';
+import { ReviewModel } from '../review/review.model';
 
 class ProductCharacteristic {
   @Prop()
@@ -22,13 +22,10 @@ export class ProductModel {
     price: number;
 
   @Prop()
-    oldPrice: number;
+    oldPrice?: number;
 
   @Prop()
     credit: number;
-
-  @Prop()
-    calculatedRating: number;
 
   @Prop()
     description: string;
@@ -51,3 +48,9 @@ export class ProductModel {
 
 export type ProductDocument = HydratedDocument<ProductModel>;
 export const ProductSchema = SchemaFactory.createForClass(ProductModel);
+
+export interface ProductWithReviews extends ProductModel {
+  reviews: ReviewModel[],
+  reviewCount: number,
+  reviewAvg: number
+}
