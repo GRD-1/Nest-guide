@@ -24,6 +24,15 @@ export class TopPageService {
     return this.topPageModel.find({ firstCategory }, { alias: 1, secondCategory: 1, title: 1 }).exec();
   }
 
+  async findByText(text: string): Promise<TopPageDocument[]> {
+    return this.topPageModel.find({
+      $text: {
+        $search: text,
+        $caseSensitive: false
+      }
+    }).exec();
+  }
+
   async updateById(id: string, dto: CreateTopPageDto): Promise<TopPageDocument | null> {
     return this.topPageModel.findByIdAndUpdate(id, dto, { new: true }).exec();
   }

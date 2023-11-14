@@ -44,7 +44,7 @@ export class TopPageModel {
   @Prop({ unique: true })
     alias: string;
 
-  @Prop()
+  @Prop({ index: 'text' })
     title: string;
 
   @Prop({ type: () => HhData })
@@ -53,7 +53,7 @@ export class TopPageModel {
   @Prop({ type: () => [TopPageAdvantage] })
     advantages: TopPageAdvantage[];
 
-  @Prop()
+  @Prop({ index: 'text' })
     seoText: string;
 
   @Prop()
