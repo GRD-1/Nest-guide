@@ -1,12 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { UserModel } from '../auth/user.model';
 
 export enum TopLevelCategory {
   Courses,
   Services,
   Books,
-  Products,
+  Goods,
 }
 
 export class HhData {
@@ -25,16 +24,16 @@ export class HhData {
 
 export class TopPageAdvantage {
   @Prop()
-    title: number;
+    title: string;
 
   @Prop()
-    description: number;
+    description: string;
 }
 
 @Schema({ timestamps: true, _id: true })
 export class TopPageModel {
   @Prop({ enum: TopLevelCategory })
-    firstCategory: TopLevelCategory;
+    firstCategory: string;
 
   @Prop()
     secondCategory: string;
@@ -42,7 +41,7 @@ export class TopPageModel {
   @Prop()
     category: string;
 
-  @Prop()
+  @Prop({ unique: true })
     alias: string;
 
   @Prop()
