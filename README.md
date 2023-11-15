@@ -64,7 +64,7 @@ $ docker logs nest-guide-node-debug -f --tail 30
 * for product mode use:
 ``` bash
 $ docker stop $(docker ps -aq)
-$ docker-compose -f devops/docker-compose.yml --env-file env/.env.prod up -d
+$ docker-compose -f devops/docker-compose-prod.yml --env-file env/.env.prod up -d
 ```
 * for test mode use:
 ``` bash
