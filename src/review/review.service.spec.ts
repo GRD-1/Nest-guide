@@ -27,7 +27,6 @@ describe('ReviewService', () => {
     const id = new Types.ObjectId().toHexString();
     MockedReviewModel().find().exec.mockReturnValue([{ productId: id }]);
     const res = await service.findByProductId(id);
-    // expect(res[0].productId).toBe(id);
-    expect(res[0].productId).toBe(12345);
+    expect(res[0].productId).toBe(id);
   });
 });
