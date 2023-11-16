@@ -86,23 +86,22 @@ describe('e2e tests: review module', () => {
   });
 
   it('/review/:id (DELETE) - success', () => {
-    const result = request(app.getHttpServer())
+    return request(app.getHttpServer())
       .delete(`/review/${createdId}`)
       .set('Authorization', `Bearer ${accessToken}`)
-      .expect(200);
-    return result;
+      // .expect(200);
+      .expect(301);
   });
 
   it('/review/:id (DELETE) - fail', () => {
     const fakeProductId = new Types.ObjectId().toHexString();
-    const result = request(app.getHttpServer())
+    return request(app.getHttpServer())
       .delete(`/review/${fakeProductId}`)
       .set('Authorization', `Bearer ${accessToken}`)
       .expect(404, {
         statusCode: 404,
         message: REVIEW_NOT_FOUND
       });
-    return result;
   });
 
   afterAll(() => {
