@@ -89,8 +89,7 @@ describe('e2e tests: review module', () => {
     return request(app.getHttpServer())
       .delete(`/review/${createdId}`)
       .set('Authorization', `Bearer ${accessToken}`)
-      // .expect(200);
-      .expect(301);
+      .expect(200);
   });
 
   it('/review/:id (DELETE) - fail', () => {
