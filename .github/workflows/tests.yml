@@ -15,10 +15,10 @@ jobs:
       - name: Set up Docker Compose
         uses: ndeloof/install-compose-action@v0.0.1
 
-      - name: Build and Push Docker Images
-        run: |
-          docker-compose -f devops/docker-compose.yml --env-file env/.env.test build
-          docker-compose -f devops/docker-compose.yml --env-file env/.env.test push
+      # - name: Build and Push Docker Images
+      #   run: |
+      #     docker-compose -f devops/docker-compose.yml --env-file env/.env.test build
+      #     docker-compose -f devops/docker-compose.yml --env-file env/.env.test push
 
       - name: Deploy with Docker Compose
         run: |
