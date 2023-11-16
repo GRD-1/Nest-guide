@@ -1,0 +1,27 @@
+name: tests
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        uses: KengoTODA/actions-setup-docker-compose@v1.0.9
+        with:
+          version: 2
+
+      - name: Build and Push Docker Images
+        run: |
+          docker-compose -f devops/docker-compose.yml --env-file env/.env.test build
+          docker-compose -f devops/docker-compose.yml --env-file env/.env.test push
+
+      - name: Deploy with Docker Compose
+        run: |
+          docker-compose -f devops/docker-compose.yml --env-file env/.env.test up
