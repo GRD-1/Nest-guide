@@ -1,7 +1,7 @@
 # название схемы заданий
-name: commit-push-workflow
+name: push-workflow
 # название инстанса схемы заданий (если не указать, то вместо будет отображаться заголовок коммита)
-run-name: commit-push-workflow-runner
+run-name: push-workflow-runner
 
 on:
   # при каком событии выполнять

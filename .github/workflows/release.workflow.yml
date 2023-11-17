@@ -1,7 +1,7 @@
 # название схемы заданий
-name: testWorkflow
+name: release-workflow
 # название инстанса схемы заданий (если не указать, то вместо будет отображаться заголовок коммита)
-run-name: testWorkflowRunner
+run-name: release-workflow-runner
 
 on:
   # при каком событии выполнять
