@@ -1,0 +1,42 @@
+# название схемы заданий
+name: commit-push-workflow
+# название инстанса схемы заданий (если не указать, то вместо будет отображаться заголовок коммита)
+run-name: commit-push-workflow-runner
+
+on:
+  # при каком событии выполнять
+  push:
+    # в каких ветках отслеживать это событие
+    branches:
+      - main
+
+jobs:
+  # описание группы заданий
+  regression testing:
+    # операционная система, в которой будут выполняться задания
+    runs-on: ubuntu-latest
+
+    # задания
+    steps:
+      # копируем код проекта в виртуальную машину
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # устанавливаем docker-compose
+      - name: Set up Docker Compose
+        uses: ndeloof/install-compose-action@v0.0.1
+
+      # запускаем docker-compose файл, разворачиваем контейнеры
+      - name: Deploy with Docker Compose
+        run: |
+          docker-compose -f devops/docker-compose.yml --env-file env/.env.test up -d
+
+      # запускаем тесты в докер контейнере
+      - name: run tests
+        run: |
+          docker exec nest-guide-node-test npm run test:cov
+
+      # останавливаем докер контейнеры (иначе задача будет выполняться бесконечно)
+      - name: stop docker containers and quit
+        run: |
+          docker stop $(docker ps -aq)

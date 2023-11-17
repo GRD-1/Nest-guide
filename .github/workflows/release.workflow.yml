@@ -1,0 +1,77 @@
+# название схемы заданий
+name: testWorkflow
+# название инстанса схемы заданий (если не указать, то вместо будет отображаться заголовок коммита)
+run-name: testWorkflowRunner
+
+on:
+  # при каком событии выполнять
+  release:
+    types: [published]
+
+jobs:
+  # описание группы заданий
+  testing:
+    # операционная система, в которой будут выполняться задания
+    runs-on: ubuntu-latest
+
+    # задания
+    steps:
+      # копируем код проекта в виртуальную машину
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # устанавливаем docker-compose
+      - name: Set up Docker Compose
+        uses: ndeloof/install-compose-action@v0.0.1
+
+      # запускаем docker-compose файл, разворачиваем контейнеры
+      - name: Deploy with Docker Compose
+        run: |
+          docker-compose -f devops/docker-compose.yml --env-file env/.env.test up -d
+
+      # запускаем тесты в докер контейнере
+      - name: run tests
+        run: |
+          docker exec nest-guide-node-test npm run test:cov
+
+      # останавливаем докер контейнеры (иначе задача будет выполняться бесконечно)
+      - name: stop docker containers and quit
+        run: |
+          docker stop $(docker ps -aq)
+
+  # описание группы заданий
+  building and packing:
+    # операционная система, в которой будут выполняться задания
+    runs-on: ubuntu-latest
+
+    # задания
+    steps:
+      # копируем код проекта в виртуальную машину
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # устанавливаем docker-compose
+      - name: Set up Docker Compose
+        uses: ndeloof/install-compose-action@v0.0.1
+
+      # запускаем docker-compose файл, разворачиваем контейнеры в product mode
+      - name: Deploy with Docker Compose
+        run: |
+          docker-compose -f devops/docker-compose-prod.yml --env-file env/.env.prod up -d
+
+      # останавливаем докер контейнеры (иначе задача будет выполняться бесконечно)
+      - name: stop docker containers and quit
+        run: |
+          docker stop $(docker ps -aq)
+
+      # сохраняем образ сборки для загрузки с удаленного сервера и запуска из docker-compose по ссылке
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@v5
+        with:
+          # хранилище docker images на гитхабе
+          registry: docker.pkg.github.com
+          name: docker.pkg.github.com/GRD-1/Nest-guide
+          # учетные данные для доступа к образу (прописываются в настройках гитхаба)
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tags: "production"
