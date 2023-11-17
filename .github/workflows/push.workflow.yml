@@ -12,7 +12,7 @@ on:
 
 jobs:
   # описание группы заданий
-  regression testing:
+  regression-testing:
     # операционная система, в которой будут выполняться задания
     runs-on: ubuntu-latest
 

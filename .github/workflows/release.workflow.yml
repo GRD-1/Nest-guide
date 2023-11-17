@@ -40,7 +40,7 @@ jobs:
           docker stop $(docker ps -aq)
 
   # описание группы заданий
-  building and packing:
+  building-and-packing:
     # операционная система, в которой будут выполняться задания
     runs-on: ubuntu-latest
 
