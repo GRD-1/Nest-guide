@@ -36,6 +36,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_SECRET }}
 
+      # устанавливаем docker-compose
+      - name: Set up Docker Compose
+        uses: ndeloof/install-compose-action@v0.0.1
+
+      # запускаем docker-compose файл, разворачиваем контейнеры в product mode
+      - name: Deploy with Docker Compose
+        run: |
+          docker-compose -f devops/docker-compose-prod.yml --env-file env/.env.prod up -d
+
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@v5
         with:
@@ -44,4 +53,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 #          tags: "production"
+
+      # останавливаем докер контейнеры (иначе задача будет выполняться бесконечно)
+      - name: stop docker containers and quit
+        run: |
+          docker stop $(docker ps -aq)
 
