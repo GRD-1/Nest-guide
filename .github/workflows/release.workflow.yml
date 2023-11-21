@@ -35,7 +35,7 @@ jobs:
             conventional-changelog-conventionalcommits@4.6.3
             conventional-changelog-eslint@3.0.9
         env:
-          GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.NEST-GUIDE_WORKFLOW_TOKEN }}
 
       # устанавливаем docker-compose
       - name: Set up Docker Compose
