@@ -37,7 +37,7 @@ jobs:
         with:
           # хранилище docker images на гитхабе
           registry: docker.pkg.github.com
-          name: "docker.pkg.github.com/GRD-1/Nest-guide/nodeImage:${{ github.event.release.tag_name }"
+          name: "docker.pkg.github.com/GRD-1/Nest-guide/nodeImage:${{ github.event.release.tag_name}}"
 
           # расположение докерфайла (если он не в корне)
           dockerfile: devops/Dockerfile-prod
