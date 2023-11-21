@@ -40,7 +40,7 @@ jobs:
           name: docker.pkg.github.com/GRD-1/Nest-guide
 
           # расположение докерфайла (если он не в корне)
-          dockerfile: devops/docker-compose-prod.yml
+          dockerfile: devops/Dockerfile-prod.yml
 
           # учетные данные для доступа к образу (прописываются в настройках гитхаба)
           username: ${{ secrets.DOCKER_USERNAME }}
