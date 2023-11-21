@@ -6,9 +6,9 @@ on:
     branches:
       - main
       - master
-    paths:
-      - '**/*.ts'
-      - '.github/workflows/release.yml'
+#    paths:
+#      - '**/*.ts'
+#      - '.github/workflows/release.yml'
 
 jobs:
   release:
