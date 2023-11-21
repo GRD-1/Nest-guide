@@ -23,6 +23,7 @@
 8. [Tests](#tests)
 9. [Database](#tests)
 10. [Logs](#tests)
+11. [CI/CD](#cicd)
 
 ## Packages
 
@@ -111,3 +112,7 @@ $ docker exec nest-guide-node-test npm run test:e2e
 # test coverage
 $ docker exec nest-guide-node-test npm run test:cov
 ```
+
+## CI/CD
+
+GitHub actions + semantic-release
