@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/GRD-1/Nest-guide/compare/v1.1.0...v1.2.0) (2023-11-21)
+
+
+### feat
+
+* .github/workflows/release.workflow.yml & pack release to docker image ([0c1d0e8](https://github.com/GRD-1/Nest-guide/commit/0c1d0e8da6620de4bfa0548c8200efb2fce04381))
+
 # [1.1.0](https://github.com/GRD-1/Nest-guide/compare/v1.0.0...v1.1.0) (2023-11-21)
 
 
