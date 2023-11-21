@@ -1,7 +1,7 @@
 # название схемы заданий
-name: release-workflow
+name: temp-workflow
 # название инстанса схемы заданий (если не указать, то вместо будет отображаться заголовок коммита)
-run-name: release-workflow-runner
+run-name: temp-runner
 
 on:
   # при каком событии выполнять
@@ -38,6 +38,10 @@ jobs:
           # хранилище docker images на гитхабе
           registry: docker.pkg.github.com
           name: docker.pkg.github.com/GRD-1/Nest-guide
+
+          # расположение докерфайла (если он не в корне)
+          dockerfile: devops/docker-compose-prod.yml
+
           # учетные данные для доступа к образу (прописываются в настройках гитхаба)
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
