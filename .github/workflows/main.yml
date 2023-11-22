@@ -14,8 +14,8 @@ jobs:
         with:
           registry: docker.pkg.github.com
           name: docker.pkg.github.com/GRD-1/Nest-guide/Nest-guide
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          # username: ${{ secrets.DOCKER_USERNAME }}
+          # password: ${{ secrets.DOCKER_PASSWORD }}
           dockerfile: devops/Dockerfile-prod
         env:
           GITHUB_TOKEN: ${{ secrets.NEST_GUIDE_WORKFLOW_TOKEN }}
