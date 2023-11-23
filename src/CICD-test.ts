@@ -1,9 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-class CICDTest  {
-  testMetod(a: any) {
-    console.log('text text text')
-
+class CICDTest {
+  testMethod(a: any): void {
+    console.log('text text text text');
   }
 }
