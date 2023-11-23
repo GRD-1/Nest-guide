@@ -59,4 +59,3 @@ jobs:
       - name: stop docker containers and quit
         run: |
           docker stop $(docker ps -aq)
-
