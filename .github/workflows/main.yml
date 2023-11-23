@@ -13,7 +13,7 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           registry: docker.pkg.github.com
-          name: docker.pkg.github.com/GRD-1/Nest-guide/Nest-guide
+          name: docker.pkg.github.com/GRD-1/Nest-guide/node-img
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.NEST_GUIDE_WORKFLOW_TOKEN }}
           dockerfile: devops/Dockerfile-prod
