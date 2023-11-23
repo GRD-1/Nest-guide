@@ -1,3 +1,3 @@
 {
-  "*.{js,ts}": ["prettier --list-different", "eslint", "git add"]
+  "*.{js,ts}": ["prettier --list-different", "eslint --fix", "git add"]
 }
