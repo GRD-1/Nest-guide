@@ -84,5 +84,11 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "bash -c 'npm test'",
+      "commit-msg": "bash -c 'node .husky/check-commit-msg.js'"
+    }
   }
 }
