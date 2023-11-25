@@ -77,9 +77,6 @@
     },
     "cz-customizable": {
       "config": "config/git/commitizen.js"
-    },
-    "lint-staged": {
-      "config": "config/git/.lintstagedrc.json"
     }
   },
   "jest": {
