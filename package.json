@@ -39,6 +39,7 @@
     "rxjs": "^7.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
@@ -50,6 +51,7 @@
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
+    "cz-customizable": "^7.0.0",
     "eslint": "^8.51.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.3.0",
@@ -67,6 +69,14 @@
     "ts-node": "^10.0.0",
     "tsconfig-paths": "4.2.0",
     "typescript": "^4.7.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "config/git/commitizen.js"
+    }
   },
   "jest": {
     "moduleFileExtensions": [
