@@ -7,7 +7,5 @@ class CICDTEST {
     const uselessConst = 25;
 
 
-
-
   }
 }
