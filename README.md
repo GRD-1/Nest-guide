@@ -2,7 +2,7 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-<p style="display: block; width: 100%; text-align:center;">Nest.js training project</p>
+<p style="display: block; width: 100%; text-align:center;">Nest.js training project. It was created to demonstrate my base skills in Nest.js coding.</p>
 <p style="display: block; width: 100%; text-align:center;">
   <a href="https://nodejs.org/en/about" target="_blank"><img src="https://img.shields.io/badge/Node.js-v18.16.0-blue?logo=nodedotjs" alt="Node.js Version" /></a>
   <a href="https://www.typescriptlang.org/" target="_blank"><img src="https://img.shields.io/badge/TypeScript-v4.7.4-blue?logo=typescript" alt="TypeScript Version" /></a>
@@ -13,7 +13,7 @@
 
 ## Contents
 
-1. [Packages](#packages)
+1. [Stack](#Stack)
 2. [Launch](#launch)
 3. [Usage](#usage)
 4. [Environment](#environment)
@@ -25,7 +25,7 @@
 10. [Logs](#tests)
 11. [CI/CD](#cicd)
 
-## Packages
+## Stack
 
 <div>
     <div>
@@ -83,8 +83,9 @@ $ docker-compose -f devops/docker-compose.yml --env-file env/.env.test up -d
 
 ## Environment
 
-Environment variables are here: ./env
-They connected to the project in the docker-compose files at the [env_file] section.
+Environment variables are here: ./env. 
+Key environment variables are connected to the project using docker-compose files at the [env_file] section.
+Inside the application, environment variables are mounted using the built-in Nest.js module "ConfigModule".
 
 ## Settings
 
@@ -120,3 +121,4 @@ $ docker exec nest-guide-node-test npm run test:cov
 ## CI/CD
 
 GitHub actions + semantic-release
+the workflow files are here: .github/workflows
