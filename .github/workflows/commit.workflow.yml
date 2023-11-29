@@ -22,6 +22,39 @@ jobs:
         run: |
           docker-compose -f devops/docker-compose.yml --env-file env/.env.dev up -d
 
+      - name: Get file changes
+        id: get_file_changes
+        uses: trilom/file-changes-action@v1.2.4
+        # fileOutput: 
+
+      # - name: File Changes Action
+      #   # You may pin to the exact commit or the version.
+      #   # uses: trilom/file-changes-action@a6ca26c14274c33b15e6499323aac178af06ad4b
+      #   uses: trilom/file-changes-action@v1.2.4
+      #   with:
+      #     # The github repository you want to compare changes from, defaults to the github.repository.
+      #     githubRepo: # optional
+      #     # The github action token will be used by default, if you want to use something different than you can pass it in here.
+      #     githubToken: # default is ${{ github.token }}
+      #     # Pass in a specific sha to compare to as a before, required if using pushAfter. (push BASE payload after github.payload.before)
+      #     pushBefore: # optional
+      #     # Pass in a specific sha to compare to as an after, required if using pushBefore. (push HEAD payload after github.payload.after)
+      #     pushAfter: # optional
+      #     # Pass in a specific PR number to get file changes from.
+      #     prNumber: # optional
+      #     # Choose between json (default), or custom delimiter by passing a string, for example ',' for csv variable output
+      #     output: # default is json
+      #     # Choose between json (default), or custom delimiter by passing a string, for example ',' for csv file output.  If you set as json the file output will be suffixed with .json, if you select ',' then the output will be .csv, else .txt will be the output.
+      #     fileOutput: # default is json
+
+      - name: Echo file changes
+        id: hello
+        run: |
+          echo Added files: ${{ steps.get_file_changes.outputs.files_added }}
+          echo Changed files: ${{ steps.get_file_changes.outputs.files_modified }}
+          echo Removed files: ${{ steps.get_file_changes.outputs.files_removed }}
+        if: ${{ always() && (steps.get_file_changes.outputs.files_added || steps.get_file_changes.outputs.files_modified) }}
+
       - name: Prettier Checking
         if: ${{ always() && (steps.get_file_changes.outputs.files_added || steps.get_file_changes.outputs.files_modified) }}
         run: yarn prettier --config ./prettier.config.js --ignore-path ./.prettierignore  ${{ steps.get_file_changes.outputs.files_added }} ${{ steps.get_file_changes.outputs.files_modified }} --fix
