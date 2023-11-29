@@ -26,6 +26,10 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/npm.lock') }}
 
+      - name: installing packages
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm install
+
       - name: Get file changes
         id: file_changes
         uses: trilom/file-changes-action@v1.2.4
