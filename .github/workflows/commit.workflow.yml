@@ -15,31 +15,35 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Docker Compose
-        uses: ndeloof/install-compose-action@v0.0.1
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-      - name: Deploy with Docker Compose
-        run: |
-          docker-compose -f devops/docker-compose.yml --env-file env/.env.dev up -d
+      - name: Restoring cache
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/npm.lock') }}
 
       - name: Get file changes
-        id: get_file_changes
+        id: file_changes
         uses: trilom/file-changes-action@v1.2.4
 
       - name: Echo file changes
         id: hello
         run: |
-          echo Added files: ${{ steps.get_file_changes.outputs.files_added }}
-          echo Changed files: ${{ steps.get_file_changes.outputs.files_modified }}
-          echo Removed files: ${{ steps.get_file_changes.outputs.files_removed }}
-        if: ${{ always() && (steps.get_file_changes.outputs.files_added || steps.get_file_changes.outputs.files_modified) }}
+          echo Added files: ${{ steps.file_changes .outputs.files_added }}
+          echo Changed files: ${{ steps.file_changes .outputs.files_modified }}
+          echo Removed files: ${{ steps.file_changes .outputs.files_removed }}
+        if: ${{ always() && (steps.file_changes .outputs.files_added || steps.file_changes .outputs.files_modified) }}
 
       - name: Prettier Checking
-        if: ${{ always() && (steps.get_file_changes.outputs.files_added || steps.get_file_changes.outputs.files_modified) }}
-#        run: npm prettier --config ./prettier.config.js --ignore-path ./.prettierignore  ${{ steps.get_file_changes.outputs.files_added }} ${{ steps.get_file_changes.outputs.files_modified }} --fix
-        run: docker exec nest-guide-node-dev --workdir /projectFiles npm run prettier --config ./prettier.config.js --ignore-path ./.prettierignore  ${{ steps.get_file_changes.outputs.files_added }} ${{ steps.get_file_changes.outputs.files_modified }} --write
+        if: ${{ always() && (steps.file_changes .outputs.files_added || steps.file_changes .outputs.files_modified) }}
+        run: npm prettier --config ./prettier.config.js --ignore-path ./.prettierignore  ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }} --fix
+#        run: docker exec nest-guide-node-dev --workdir /projectFiles npm run prettier --config ./prettier.config.js --ignore-path ./.prettierignore  ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }} --write
 
       - name: ESLint Checking
-        if: ${{ always() && (steps.get_file_changes.outputs.files_added || steps.get_file_changes.outputs.files_modified) }}
-#        run: npm eslint --config ./.eslintrc.js --ignore-path ./.eslintignore ${{ steps.get_file_changes.outputs.files_added }} ${{ steps.get_file_changes.outputs.files_modified }} --fix
-        run: docker exec nest-guide-node-dev npm run eslint --config ./.eslintrc.js --ignore-path ./.eslintignore ${{ steps.get_file_changes.outputs.files_added }} ${{ steps.get_file_changes.outputs.files_modified }} --fix
+        if: ${{ always() && (steps.file_changes .outputs.files_added || steps.file_changes .outputs.files_modified) }}
+        run: npm eslint --config ./.eslintrc.js --ignore-path ./.eslintignore ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }} --fix
+#        run: docker exec nest-guide-node-dev npm run eslint --config ./.eslintrc.js --ignore-path ./.eslintignore ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }} --fix

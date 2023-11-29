@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  regression-testing:
+  tests:
     runs-on: ubuntu-latest
 
     steps:
