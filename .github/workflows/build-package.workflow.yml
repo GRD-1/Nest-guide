@@ -5,7 +5,7 @@ run-name: push-workflow-runner
 
 on:
   # при каком событии выполнять
-  applypatch-msg:
+  pre-applypatch:
     # в каких ветках отслеживать это событие
     branches:
       - main
