@@ -33,6 +33,8 @@ jobs:
       - name: Get file changes
         id: file_changes
         uses: trilom/file-changes-action@v1.2.4
+        with:
+          output: ' '
 
       - name: Echo file changes
         id: hello
@@ -45,7 +47,7 @@ jobs:
       - name: Prettier Checking
         if: ${{ always() && (steps.file_changes .outputs.files_added || steps.file_changes .outputs.files_modified) }}
 #        run: npm run prettier --config .prettierrc.json --ignore-path .prettierignore  ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }} --fix
-        run: npm run prettier --config .prettierrc.json --ignore-path .prettierignore  ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }}--fix
+        run: npm run prettier ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }} --fix
 
 #      - name: ESLint Checking
 #        if: ${{ always() && (steps.file_changes .outputs.files_added || steps.file_changes .outputs.files_modified) }}

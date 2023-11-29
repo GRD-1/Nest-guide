@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "prettier": "prettier --write",
+    "prettier": "prettier --write --config ./.prettierrc.json --ignore-path ./.prettierignore",
     "eslint": "eslint --fix",
     "start": "nest start",
     "start:dev": "nest start --watch",
