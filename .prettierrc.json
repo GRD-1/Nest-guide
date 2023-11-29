@@ -1,4 +1,5 @@
 {
+  "files": ["file1.js", "file2.js", "src/**/*.js", "styles/**/*.css"],
   "printWidth": 120,
   "singleQuote": true,
   "trailingComma": "none"
