@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-class CICDTEST {
-  testMethod(a: any): void {
+export class CICDTEST {
+  testMethod(a: string): void {
     console.log('text text text text');
     const uselessConst = 25;
   }
