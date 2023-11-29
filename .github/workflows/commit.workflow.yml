@@ -1,5 +1,5 @@
-name: push-workflow
-run-name: push-workflow-runner
+name: commit-workflow
+run-name: commit-workflow-runner
 
 on:
   push:
@@ -21,20 +21,6 @@ jobs:
       - name: Deploy with Docker Compose
         run: |
           docker-compose -f devops/docker-compose.yml --env-file env/.env.dev up -d
-
-      - name: Get file changes
-        id: get_file_changes
-        uses: trilom/file-changes-action@v1.2.3
-        with:
-          output: ' '
-
-      - name: Echo file changes
-        id: hello
-        run: |
-          echo Added files: ${{ steps.get_file_changes.outputs.files_added }}
-          echo Changed files: ${{ steps.get_file_changes.outputs.files_modified }}
-          echo Removed files: ${{ steps.get_file_changes.outputs.files_removed }}
-        if: ${{ always() && (steps.get_file_changes.outputs.files_added || steps.get_file_changes.outputs.files_modified) }}
 
       - name: Prettier Checking
         if: ${{ always() && (steps.get_file_changes.outputs.files_added || steps.get_file_changes.outputs.files_modified) }}
