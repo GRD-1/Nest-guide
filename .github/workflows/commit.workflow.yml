@@ -11,26 +11,26 @@ jobs:
 
     steps:
       - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Restoring cache
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/npm.lock') }}
+
+      - name: Installing packages
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Checkout Repository
         run: npx commitlint --edit -g './config/git/commitlint.js'
 
-#      - name: Checkout Repository
-#        uses: actions/checkout@v4
-#
-#      - name: Staring Node.js ${{ matrix.node-version }}
-#        uses: actions/setup-node@v1
-#        with:
-#          node-version: ${{ matrix.node-version }}
-#
-#      - name: Restoring cache
-#        uses: actions/cache@v2
-#        with:
-#          path: '**/node_modules'
-#          key: ${{ runner.os }}-modules-${{ hashFiles('**/npm.lock') }}
-#
-#      - name: Installing packages
-#        if: steps.npm-cache.outputs.cache-hit != 'true'
-#        run: npm install
-#
 #      - name: Get file changes
 #        id: file_changes
 #        uses: trilom/file-changes-action@v1.2.4
