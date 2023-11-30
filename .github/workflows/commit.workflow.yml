@@ -13,23 +13,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Staring Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Restoring cache
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/npm.lock') }}
-
-      - name: Installing packages
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm install
-
       - name: Commitlint
-        run: npm run commitlint
+        uses: wagoid/commitlint-github-action@v5
 
 #    steps:
 #      - name: Checkout Repository
