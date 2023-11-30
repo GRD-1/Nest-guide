@@ -7,8 +7,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "format": "prettier --write --config ./.prettierrc.json --ignore-path ./.prettierignore --fix",
-    "lint": "eslint \"{src,test}/**/*.ts\" --config ./.eslintrc.js --ignore-path ./.eslintignore --fix",
+    "format": "prettier --config ./.prettierrc.json --ignore-path ./.prettierignore",
+    "lint": "eslint \"{src,test}/**/*.ts\" --config ./.eslintrc.json --ignore-path ./.eslintignore",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nodemon --config nodemon.json src/main.ts",
