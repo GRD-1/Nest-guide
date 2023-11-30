@@ -2,6 +2,7 @@
 node_modules/
 git
 .github
+.husky
 package-lock.json
 app/
 .prettierrc.json

@@ -50,4 +50,4 @@ jobs:
 
       - name: ESLint Checking
         if: ${{ always() && (steps.file_changes .outputs.files_added || steps.file_changes .outputs.files_modified) }}
-        run: npm run eslint ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }}
+        run: npm run lint ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }}
