@@ -6,6 +6,8 @@ export class CICDTEST
 
 
 
+
+
     console.log('text text text text');
     const uselessConst = 25;
   }
