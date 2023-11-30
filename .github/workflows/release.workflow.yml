@@ -44,3 +44,5 @@ jobs:
             conventional-changelog-eslint@3.0.9
         env:
           GITHUB_TOKEN: ${{ secrets.NEST-GUIDE_WORKFLOW_TOKEN }}
+
+# "eslint \"{src,test}/**/*.ts\" --config ./.eslintrc.json --ignore-path ./.eslintignore"
