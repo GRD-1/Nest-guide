@@ -7,8 +7,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "format": "prettier --config ./.prettierrc.json --ignore-path ./.prettierignore",
-    "lint": "eslint --config ./.eslintrc.json --ignore-path ./.eslintignore",
+    "format": "prettier --config config/prettier/.prettierrc.json --ignore-path config/prettier/.prettierignore",
+    "lint": "eslint --config config/eslint/.eslintrc.json --ignore-path config/eslint/.eslintignore",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nodemon --config nodemon.json src/main.ts",
@@ -95,5 +95,9 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "prettier": "./config/prettier/.prettierrc.json",
+  "eslintConfig": {
+    "extends": "./config/eslint/.eslintrc.json"
   }
 }
