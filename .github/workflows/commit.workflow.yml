@@ -16,9 +16,6 @@ jobs:
       - name: Commitlint
         uses: wagoid/commitlint-github-action@v5
 
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
       - name: Staring Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:

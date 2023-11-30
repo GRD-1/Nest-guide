@@ -26,11 +26,13 @@ module.exports = {
     // Тип не может быть пустым
     'type-empty': [2, 'never'],
 
-    // Перечислим все возможные варианты коммитов
+    // Правила для commitlint и commitizen нужно настраивать и для  commitlint-action,
+    // но они настраиваются только через commitlint.config.js, который должен лежать в корне,
+    // поэтому отдельно настраивать правила нет смысла, пользуемся регламентом Conventional Commits (как здесь)
     'type-enum': [
       2,
       'always',
-      ['build', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor', 'revert', 'style', 'test', 'chore', 'barabulka']
+      ['build', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor', 'revert', 'style', 'test', 'chore']
     ]
   }
 };
