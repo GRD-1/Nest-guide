@@ -7,9 +7,9 @@ on:
       - main
 
 jobs:
-  linting:
-    runs-on:
-      ubuntu-latest
+#  linting:
+#    runs-on:
+#      ubuntu-latest
 
 #    steps:
 #      - name: Checkout Repository
