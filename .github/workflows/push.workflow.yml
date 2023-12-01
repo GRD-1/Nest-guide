@@ -32,9 +32,13 @@ jobs:
           docker-compose -f devops/docker-compose.yml --env-file env/.env.test up -d
 
       # запускаем тесты в докер контейнере
-      - name: run tests
+      - name: run unit tests
         run: |
-          docker exec nest-guide-node-test npm run test:cov
+          docker exec nest-guide-node-test npm run test
+
+      - name: run e2e tests
+        run: |
+          docker exec nest-guide-node-test npm run test:e2e
 
       # останавливаем докер контейнеры (иначе задача будет выполняться бесконечно)
       - name: stop docker containers and quit
