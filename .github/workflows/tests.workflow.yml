@@ -22,7 +22,8 @@ jobs:
 
       - name: run tests
         run: |
-          docker exec nest-guide-node-test npm run test:cov
+          docker exec nest-guide-node-test npm run test
+          docker exec nest-guide-node-test npm run test:e2e
 
       - name: stop docker containers and quit
         run: |
