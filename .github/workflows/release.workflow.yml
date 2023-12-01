@@ -47,51 +47,50 @@ jobs:
           echo Removed files: ${{ steps.file_changes .outputs.files_removed }}
         if: ${{ always() && (steps.file_changes .outputs.files_added || steps.file_changes .outputs.files_modified) }}
 
-#      - name: Prettier Checking
-#        if: ${{ always() && (steps.file_changes .outputs.files_added || steps.file_changes .outputs.files_modified) }}
-#        run: npm run format ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }}
-#
-#      - name: ESLint Checking
-#        if: ${{ always() && (steps.file_changes .outputs.files_added || steps.file_changes .outputs.files_modified) }}
-#        run: npm run lint ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }}
+      - name: Prettier Checking
+        if: ${{ always() && (steps.file_changes .outputs.files_added || steps.file_changes .outputs.files_modified) }}
+        run: npm run format ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }}
+
+      - name: ESLint Checking
+        if: ${{ always() && (steps.file_changes .outputs.files_added || steps.file_changes .outputs.files_modified) }}
+        run: npm run lint ${{ steps.file_changes .outputs.files_added }} ${{ steps.file_changes .outputs.files_modified }}
 
 # "eslint \"{src,test}/**/*.ts\" --config ./.eslintrc.json --ignore-path ./.eslintignore"
 
+  tests:
+    runs-on: ubuntu-latest
 
-#  tests:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - name: Checkout Repository
-#        uses: actions/checkout@v4
-#
-#      - name: Set up Docker Compose
-#        uses: ndeloof/install-compose-action@v0.0.1
-#
-#      - name: Deploy with Docker Compose
-#        run: |
-#          docker-compose -f devops/docker-compose.yml --env-file env/.env.test up -d
-#
-#      - name: run tests
-#        run: |
-#          docker exec nest-guide-node-test npm run test:cov
-#
-#      - name: stop docker containers and quit
-#        run: |
-#          docker stop $(docker ps -aq)
-#
-#  prepare release:
-#    name: prepare release
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Create Release
-#        uses: cycjimmy/semantic-release-action@v2
-#        with:
-#          semantic_version: 18.0.0
-#          extra_plugins: |
-#            @semantic-release/changelog@6.0.0
-#            @semantic-release/git@10.0.0
-#            conventional-changelog-conventionalcommits@4.6.3
-#            conventional-changelog-eslint@3.0.9
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.NEST-GUIDE_WORKFLOW_TOKEN }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        uses: ndeloof/install-compose-action@v0.0.1
+
+      - name: Deploy with Docker Compose
+        run: |
+          docker-compose -f devops/docker-compose.yml --env-file env/.env.test up -d
+
+      - name: run tests
+        run: |
+          docker exec nest-guide-node-test npm run test:cov
+
+      - name: stop docker containers and quit
+        run: |
+          docker stop $(docker ps -aq)
+
+  prepare release:
+    name: prepare release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          semantic_version: 18.0.0
+          extra_plugins: |
+            @semantic-release/changelog@6.0.0
+            @semantic-release/git@10.0.0
+            conventional-changelog-conventionalcommits@4.6.3
+            conventional-changelog-eslint@3.0.9
+        env:
+          GITHUB_TOKEN: ${{ secrets.NEST-GUIDE_WORKFLOW_TOKEN }}
