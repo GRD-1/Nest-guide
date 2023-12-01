@@ -5,7 +5,7 @@ run-name: push-workflow-runner
 
 on:
   # при каком событии выполнять
-  push:
+  pull_request:
     # в каких ветках отслеживать это событие
     branches:
       - main
