@@ -2,7 +2,7 @@ name: commit-workflow
 run-name: commit-workflow-runner
 
 on:
-  push:
+  pull_request:
 
 jobs:
   linting:
