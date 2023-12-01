@@ -2,7 +2,8 @@ name: release-workflow
 run-name: release-workflow-runner
 
 on:
-  push:
+#  push:
+  pull_request:
     branches:
       - main
 
