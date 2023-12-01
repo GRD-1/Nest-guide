@@ -1,4 +1,4 @@
-name: Release
+name: release-workflow
 run-name: release-workflow-runner
 
 on:
