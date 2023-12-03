@@ -2,7 +2,7 @@ name: tests-workflow
 run-name: tests-workflow-runner
 
 on:
-  push:
+#  push:
   pull_request:
     branches:
       - main
@@ -15,20 +15,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-#      - name: Set up Docker Compose
-#        uses: ndeloof/install-compose-action@v0.0.1
-
       - name: Deploy with Docker Compose
         run: |
           docker-compose -f devops/docker-compose.yml --env-file env/.env.test up -d
-
-#      - name: Deploy with Docker Compose
-#        uses: isbang/compose-action@v1.5.1
-#        with:
-#          compose-file: "./devops/docker-compose.yml"
-#        env:
-#          NODE_ENV: "test"
-#          COMPOSE_PROJECT_NAME: "nest-guide-test"
 
       - name: run tests
         run: |
