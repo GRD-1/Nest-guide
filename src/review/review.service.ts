@@ -13,11 +13,11 @@ export class ReviewService {
     return newReview.save();
   }
 
-  async delete<T>(id: string): Promise<unknown> {
+  async delete(id: string): Promise<unknown> {
     return this.reviewModel.findByIdAndDelete(id).exec();
   }
 
-  async findByProductId(productId: string): Promise<ReviewDocument[]> {
+  async findByProductId(productId: string): Promise<unknown> {
     return this.reviewModel.find({ productId }).exec();
   }
 
