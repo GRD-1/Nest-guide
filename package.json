@@ -100,5 +100,8 @@
   "prettier": "./config/prettier/.prettierrc.json",
   "eslintConfig": {
     "extends": "./config/eslint/.eslintrc.json"
+  },
+  "release": {
+    "extends": "./config/git/.releaserc.json"
   }
 }
