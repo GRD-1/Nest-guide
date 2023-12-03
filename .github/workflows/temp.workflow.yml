@@ -3,9 +3,7 @@ run-name: release-workflow-runner
 
 on:
   pull_request:
-    branches:
-      - main
-      - master
+  workflow_dispatch:
 
 jobs:
   release:
