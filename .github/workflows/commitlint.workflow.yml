@@ -1,8 +1,8 @@
-name: Commitlint-workflow
-run-name: Commitlint-workflow-runner
+name: commitlint-workflow
+run-name: commitlint-workflow-runner
 
 on:
-  push:
+#  push:
   pull_request:
 
 jobs:
