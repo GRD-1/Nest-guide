@@ -9,6 +9,10 @@
       "@semantic-release/commit-analyzer",
       {
         "preset":"ESLint",
+        "parserOpts": {
+          "headerPattern": "^(.*)(\\(\\S+\\))?\\:\\s(.*)$",
+          "headerCorrespondence": ["type", "scope", "subject"]
+        },
         "releaseRules":[
           {"tag": "breaking", "release": "major"},
           {"tag": "chore", "release": false},
