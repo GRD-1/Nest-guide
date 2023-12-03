@@ -1,3 +1,22 @@
+# [2.0.0](https://github.com/GRD-1/Nest-guide/compare/v1.4.0...v2.0.0) (2023-12-03)
+
+
+### break
+
+* move .releaserc to config folder ([696ca4a](https://github.com/GRD-1/Nest-guide/commit/696ca4a8810e9190f5a15fd0495e0453996430e6))
+
+### feat
+
+* update .releaserc ([1d2f70a](https://github.com/GRD-1/Nest-guide/commit/1d2f70a94869694d3f2e2a155b3cb21ad536921a))
+* update .releaserc ([6a4fffd](https://github.com/GRD-1/Nest-guide/commit/6a4fffd83acf10e44dbcbcfa13e3846a531caba4))
+
+### fix
+
+* delete .releaserc ([b86ecdd](https://github.com/GRD-1/Nest-guide/commit/b86ecdd7b1c3ecc208cec3c4ad5ed4db1d20a7a5))
+* delete .releaserc ([864f78a](https://github.com/GRD-1/Nest-guide/commit/864f78a2da1a545b50cce6557ff3aa0264e9f1ab))
+* fix package.json ([59dc4d2](https://github.com/GRD-1/Nest-guide/commit/59dc4d2e472315567af1727e99c67981b44aab9b))
+* restore .releaserc ([0cb56d1](https://github.com/GRD-1/Nest-guide/commit/0cb56d163376388035867bbdcd24f2992cbdcb83))
+
 # [1.4.0](https://github.com/GRD-1/Nest-guide/compare/v1.3.0...v1.4.0) (2023-12-03)
 
 
