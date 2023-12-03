@@ -2,6 +2,7 @@ name: Commitlint-workflow
 run-name: Commitlint-workflow-runner
 
 on:
+  push:
   pull_request:
 
 jobs:
