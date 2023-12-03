@@ -2,8 +2,7 @@ name: release-workflow
 run-name: release-workflow-runner
 
 on:
-#  push:
-  workflow_dispatch:
+  push:
     branches:
       - main
 
