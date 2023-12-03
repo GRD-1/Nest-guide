@@ -1,0 +1,17 @@
+name: Commitlint-workflow
+run-name: Commitlint-workflow-runner
+
+on:
+  pull_request:
+
+jobs:
+  Commitlint:
+    runs-on:
+      ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Commitlint
+        uses: wagoid/commitlint-github-action@v5

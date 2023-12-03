@@ -1,5 +1,5 @@
-name: commit-workflow
-run-name: commit-workflow-runner
+name: linting-workflow
+run-name: linting-workflow-runner
 
 on:
   pull_request:
@@ -12,9 +12,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Commitlint
-        uses: wagoid/commitlint-github-action@v5
 
       - name: Staring Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1

@@ -1,7 +1,7 @@
 name: tests workflow
 on:
-  push:
-#  pull_request:
+  pull_request:
+#  push:
     branches:
       - main
 
