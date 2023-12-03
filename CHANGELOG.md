@@ -1,3 +1,14 @@
+# [1.4.0](https://github.com/GRD-1/Nest-guide/compare/v1.3.0...v1.4.0) (2023-12-03)
+
+
+### chore
+
+* delete temp.workflow ([dba0bd2](https://github.com/GRD-1/Nest-guide/commit/dba0bd24112a4819c2c6053225e9ced763951f06))
+
+### feat
+
+* change release.workflow.yml ([612fbb3](https://github.com/GRD-1/Nest-guide/commit/612fbb3369a002fee3aaa4649d32b316ba3e3c2b))
+
 # [1.3.0](https://github.com/GRD-1/Nest-guide/compare/v1.2.0...v1.3.0) (2023-12-03)
 
 

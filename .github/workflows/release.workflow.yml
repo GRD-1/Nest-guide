@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  prepare_release:
+  create_release:
     name: release
     runs-on: ubuntu-latest
     steps:
