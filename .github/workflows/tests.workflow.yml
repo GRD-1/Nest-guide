@@ -1,7 +1,9 @@
-name: tests workflow
+name: tests-workflow
+run-name: tests-workflow-runner
+
 on:
-  pull_request:
 #  push:
+  pull_request:
     branches:
       - main
 

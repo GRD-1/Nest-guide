@@ -2,6 +2,7 @@ name: linting-workflow
 run-name: linting-workflow-runner
 
 on:
+  push:
   pull_request:
 
 jobs:
