@@ -3,7 +3,7 @@ run-name: linting-workflow-runner
 
 on:
 #  push:
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   linting:

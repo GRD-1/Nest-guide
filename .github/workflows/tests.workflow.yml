@@ -3,7 +3,7 @@ run-name: tests-workflow-runner
 
 on:
 #  push:
-  pull_request:
+  workflow_dispatch:
     branches:
       - main
 
