@@ -2,21 +2,15 @@ name: Release
 run-name: release-workflow-runner
 
 on:
-  workflow_dispatch:
-  push:
+  pull_request:
     branches:
       - main
       - master
-#    paths:
-#      - '**/*.ts'
-#      - '.github/workflows/release.yml'
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    # Skip running release workflow on forks
-    #    if: github.repository_owner == 'patsevanton'
     steps:
       - name: Checkout
         uses: actions/checkout@v2

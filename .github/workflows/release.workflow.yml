@@ -3,17 +3,20 @@ run-name: release-workflow-runner
 
 on:
 #  push:
-  pull_request:
+  workflow_dispatch:
     branches:
       - main
 
 jobs:
   prepare_release:
-    name: prepare release
+    name: release
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+        fetch-depth: 0
 
     - name: Create Release
       uses: cycjimmy/semantic-release-action@v2
