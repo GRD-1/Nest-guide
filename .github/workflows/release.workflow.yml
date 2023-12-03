@@ -12,14 +12,17 @@ jobs:
     name: prepare release
     runs-on: ubuntu-latest
     steps:
-      - name: Create Release
-        uses: cycjimmy/semantic-release-action@v2
-        with:
-          semantic_version: 18.0.0
-          extra_plugins: |
-            @semantic-release/changelog@6.0.0
-            @semantic-release/git@10.0.0
-            conventional-changelog-conventionalcommits@4.6.3
-            conventional-changelog-eslint@3.0.9
-        env:
-          GITHUB_TOKEN: ${{ secrets.NEST_GUIDE_WORKFLOW_TOKEN }}
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Create Release
+      uses: cycjimmy/semantic-release-action@v2
+      with:
+        semantic_version: 18.0.0
+        extra_plugins: |
+          @semantic-release/changelog@6.0.0
+          @semantic-release/git@10.0.0
+          conventional-changelog-conventionalcommits@4.6.3
+          conventional-changelog-eslint@3.0.9
+      env:
+        GITHUB_TOKEN: ${{ secrets.NEST_GUIDE_WORKFLOW_TOKEN }}
