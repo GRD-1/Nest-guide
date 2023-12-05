@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/GRD-1/Nest-guide/compare/v2.0.0...v2.1.0) (2023-12-05)
+
+
+### ci
+
+* connect all workflows ([4512fc4](https://github.com/GRD-1/Nest-guide/commit/4512fc43a52a1b7a3a4a646c59054f0b85d63095))
+
+### feat
+
+* connect all workflows ([b3301b1](https://github.com/GRD-1/Nest-guide/commit/b3301b168cf31be4957bcf8dd7111cdfb2fd5607))
+* connect all workflows ([a263945](https://github.com/GRD-1/Nest-guide/commit/a263945f2b2b5e7e3e7da25c2990954fb139916a))
+
 # [2.0.0](https://github.com/GRD-1/Nest-guide/compare/v1.4.0...v2.0.0) (2023-12-03)
 
 
