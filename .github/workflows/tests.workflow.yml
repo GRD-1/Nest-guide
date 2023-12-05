@@ -2,7 +2,7 @@ name: tests-workflow
 run-name: tests-workflow-runner
 
 on:
-#  push:
+  push:
   workflow_dispatch:
     branches:
       - main

@@ -2,7 +2,7 @@ name: commitlint-workflow
 run-name: commitlint-workflow-runner
 
 on:
-#  push:
+  push:
   workflow_dispatch:
 
 jobs:
